@@ -1,6 +1,6 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.2",
+    "contentVersion": "1.0.0.3",
     "parameters": {
         "sites_freewebapp010_name": {
             "defaultValue": "freewebapp010",
@@ -44,7 +44,9 @@
             "apiVersion": "2021-02-01",
             "name": "[parameters('sites_freewebapp010_name')]",
             "location": "West Europe",
-            "tags":{"free":"Main"},
+            "tags":{
+                "WebApp":"[resourceGroup().location]"
+            },
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_ASP_free_8571_name'))]"
             ],
